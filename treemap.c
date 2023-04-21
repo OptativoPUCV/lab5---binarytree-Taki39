@@ -81,6 +81,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value)
 
       else
       {
+        free(nodo);
         return;
       }
     }
