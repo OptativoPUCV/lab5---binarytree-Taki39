@@ -43,8 +43,36 @@ TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2)) {
 }
 
 
-void insertTreeMap(TreeMap * tree, void* key, void * value) {
-
+void insertTreeMap(TreeMap * tree, void* key, void * value) 
+{
+  TreeNode *nodo = createTreeNode(key, value);
+  if (tree->root == NULL)
+  {
+    tree->root = nodo;
+    return;
+  }
+  TreeNode *current = tree->root;
+  while (current != NULL)
+    {
+      if(tree->lower_than(nodo->pair->key, current->pair->key))
+      {
+        if(current->left == NULL)
+        {
+          current->left = nodo;
+          return;
+        }
+        current = current->left;
+      }
+      else
+      {
+        if (current->right == NULL)
+        {
+          current->right = nodo;
+          return;
+        }
+        current = current->right;
+      }
+    }
 }
 
 TreeNode * minimum(TreeNode * x){
@@ -74,7 +102,6 @@ Pair * searchTreeMap(TreeMap * tree, void* key)
   TreeNode* current = tree->root;
   while (current != NULL) 
   {
-// Si la clave actual es igual a la clave buscada, devuelve el par clave-valor correspondiente
     if (current->pair->key == key) 
     {
       Pair* pair = (Pair*)malloc(sizeof(Pair));
@@ -82,18 +109,17 @@ Pair * searchTreeMap(TreeMap * tree, void* key)
       pair->value = current->pair->value;
       return pair;
     }
-        // Si la clave buscada es menor que la clave actual, busca en el subárbol izquierdo
     else if (tree->lower_than(key, current->pair->key)) 
     {
       current = current->left;
     }
-    // Si la clave buscada es mayor que la clave actual, busca en el subárbol derecho
+
     else 
     {
       current = current->right;
     }
   }
-    // Si la clave no está en el árbol, devuelve NULL
+
   return NULL;
 }
 
