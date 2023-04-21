@@ -71,8 +71,32 @@ void eraseTreeMap(TreeMap * tree, void* key){
 
 
 
-Pair * searchTreeMap(TreeMap * tree, void* key) {
-    return NULL;
+Pair * searchTreeMap(TreeMap * tree, void* key) 
+{
+  TreeNode* current = tree->root;
+  while (current != NULL) 
+  {
+// Si la clave actual es igual a la clave buscada, devuelve el par clave-valor correspondiente
+    if (current->pair->key == key) 
+    {
+      Pair* pair = (Pair*)malloc(sizeof(Pair));
+      pair->key = current->pair->key;
+      pair->value = current->pair->value;
+      return pair;
+    }
+        // Si la clave buscada es menor que la clave actual, busca en el subárbol izquierdo
+    else if (tree->lower_than(key, current->pair->key)) 
+    {
+      current = current->left;
+    }
+    // Si la clave buscada es mayor que la clave actual, busca en el subárbol derecho
+    else 
+    {
+      current = current->right;
+    }
+  }
+    // Si la clave no está en el árbol, devuelve NULL
+  return NULL;
 }
 
 
