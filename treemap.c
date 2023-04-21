@@ -102,12 +102,9 @@ Pair * searchTreeMap(TreeMap * tree, void* key)
   TreeNode* current = tree->root;
   while (current != NULL) 
   {
-    if (current->pair->key == key) 
+    if (is_equal(tree, current->pair->key, key) == 1) 
     {
-      Pair* pair = (Pair*)malloc(sizeof(Pair));
-      pair->key = current->pair->key;
-      pair->value = current->pair->value;
-      return pair;
+      return current->pair;
     }
     else if (tree->lower_than(key, current->pair->key)) 
     {
