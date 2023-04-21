@@ -84,3 +84,14 @@ Fri 21 Apr 2023 01:17:36 PM UTC:
  tests:  10|6
 total_score: 15/70
 fc9316b
+Fri 21 Apr 2023 01:31:28 PM UTC: 
+ treemap.c | 33 ++++++++++++++++++++++-----------
+ 1 file changed, 22 insertions(+), 11 deletions(-)
+In file included from test.c:4:
+test.c: In function ‘insertTreeMap’:
+treemap.c:51:15: error: ‘aux’ is used uninitialized [-Werror=uninitialized]
+   51 |   aux->parent = tree->root;
+      |   ~~~~~~~~~~~~^~~~~~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+ceafc6a
