@@ -13,3 +13,9 @@ treemap.c:44:25: error: ‘new’ is used uninitialized [-Werror=uninitialized]
 cc1: all warnings being treated as errors
 Compilation failed
 15653d9
+Fri 21 Apr 2023 01:11:04 AM UTC: 
+ treemap.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+ tests:  1|8
+total_score: 0/70
+dab2c2d
