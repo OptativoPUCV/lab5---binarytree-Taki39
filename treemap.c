@@ -47,7 +47,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value)
 {
   //aux para el padre
   TreeNode *nodo = createTreeNode(key, value);
-  TreeNode *aux;
+  TreeNode *aux = (TreeNode *)malloc(sizeof(TreeNode));
   aux->parent = tree->root;
   if (tree->root == NULL)
   {

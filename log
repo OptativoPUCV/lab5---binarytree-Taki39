@@ -95,3 +95,9 @@ treemap.c:51:15: error: ‘aux’ is used uninitialized [-Werror=uninitialized]
 cc1: all warnings being treated as errors
 Compilation failed
 ceafc6a
+Fri 21 Apr 2023 01:32:02 PM UTC: 
+ treemap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests:  10|6
+total_score: 15/70
+8b71c9e
