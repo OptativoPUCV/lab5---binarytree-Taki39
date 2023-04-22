@@ -254,3 +254,19 @@ Sat 22 Apr 2023 11:01:21 PM UTC:
  tests:  13|5
 total_score: 20/70
 ce8d134
+Sat 22 Apr 2023 11:07:53 PM UTC: 
+ treemap.c | 21 ++++++++++++++++++++-
+ 1 file changed, 20 insertions(+), 1 deletion(-)
+In file included from test.c:4:
+treemap.c: In function ‘firstTreeMap’:
+treemap.c:252:24: error: expected expression before ‘)’ token
+  252 |     Pair *pair = (pair*)malloc(sizeof(Pair));
+      |                        ^
+treemap.c:253:21: error: ‘TreeNode’ has no member named ‘key’
+  253 |     pair->key = nodo->key;
+      |                     ^~
+treemap.c:254:23: error: ‘TreeNode’ has no member named ‘value’
+  254 |     pair->value = nodo->value;
+      |                       ^~
+Compilation failed
+d43c324

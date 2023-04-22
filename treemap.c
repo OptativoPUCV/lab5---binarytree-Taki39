@@ -235,8 +235,27 @@ Pair * upperBound(TreeMap * tree, void* key) {
     return NULL;
 }
 
-Pair * firstTreeMap(TreeMap * tree) {
+Pair * firstTreeMap(TreeMap * tree) 
+{
+  TreeNode *nodo = tree->root;
+  while (nodo != NULL && nodo->left != NULL)
+  {
+    nodo = nodo->left;
+  }
+
+  if (nodo == NULL)
+  {
     return NULL;
+  }
+  else
+  {
+    Pair *pair = (pair*)malloc(sizeof(Pair));
+    pair->key = nodo->key;
+    pair->value = nodo->value;
+    return pair;
+  }
+  
+return NULL;
 }
 
 Pair * nextTreeMap(TreeMap * tree) {
