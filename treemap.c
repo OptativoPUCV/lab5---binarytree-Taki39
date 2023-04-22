@@ -125,23 +125,36 @@ void removeNode(TreeMap * tree, TreeNode* node)
         }
       }
     }
-        free(node);
-    } else if (node->left != NULL && node->right != NULL) {
-        TreeNode* successor = minimum(node->right);
-        node->key = successor->key;
-        removeNode(tree, successor);
-    } else {
-        TreeNode* child = node->left != NULL ? node->left : node->right;
-        if (node == tree->root) {
-            tree->root = child;
-        } else {
-            TreeNode* parent = findParent(tree->root, node);
-            if (parent != NULL) {
-                if (parent->left == node) {
-                    parent->left = child;
-                } else {
-                    parent->right = child;
-                }
+    free(node);
+    
+  } 
+    
+  else if (node->left != NULL && node->right != NULL) 
+  {
+    TreeNode* successor = minimum(node->right);
+    node->pair->key = successor->key;
+    removeNode(tree, successor);
+  } 
+  else 
+  {
+    TreeNode* child = node->left != NULL ? node->left : node->right;
+    if (node == tree->root) 
+    {
+      tree->root = child;
+    } 
+    else 
+    {
+      TreeNode* parent = EncontrarParent(tree->root, node);
+      if (parent != NULL) 
+      {
+        if (parent->left == node)
+        {
+          parent->left = child;
+        } 
+        else 
+        {
+          parent->right = child;
+        }
             }
         }
         free(node);
