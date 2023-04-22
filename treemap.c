@@ -280,7 +280,21 @@ Pair * nextTreeMap(TreeMap * tree)
 
   else
   {
-    while (nodo->parent != NULL && nodo->parent->right != nodo)
+    while (nodo->parent != NULL && nodo->parent->right == nodo)
+      {
+        nodo = nodo->parent;
+      }
+    if(nodo->parent == NULL)
+    {
+      return NULL;
+    }
+    else
+    {
+      Pair *pair = (Pair *)malloc(sizeof(Pair));
+      pair->key = nodo->parent->pair->key;
+      pair->value = nodo->parent->pair->value;
+      return pair;
+    }
   }
   
   
