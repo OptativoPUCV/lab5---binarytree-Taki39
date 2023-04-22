@@ -250,8 +250,8 @@ Pair * firstTreeMap(TreeMap * tree)
   else
   {
     Pair *pair = (Pair *)malloc(sizeof(Pair));
-    pair->key = nodo->key;
-    pair->value = nodo->value;
+    pair->key = nodo->pair->key;
+    pair->value = nodo->pair->value;
     return pair;
   }
   
