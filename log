@@ -196,3 +196,21 @@ Sat 22 Apr 2023 10:05:25 PM UTC:
  tests:  12|5
 total_score: 15/70
 5d298de
+Sat 22 Apr 2023 10:13:37 PM UTC: 
+ treemap.c | 65 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 64 insertions(+), 1 deletion(-)
+In file included from test.c:4:
+treemap.c: In function ‘removeNode’:
+treemap.c:131:13: error: ‘TreeNode’ has no member named ‘key’
+  131 |         node->key = successor->key;
+      |             ^~
+treemap.c:131:30: error: ‘TreeNode’ has no member named ‘key’
+  131 |         node->key = successor->key;
+      |                              ^~
+treemap.c:138:32: error: implicit declaration of function ‘findParent’ [-Werror=implicit-function-declaration]
+  138 |             TreeNode* parent = findParent(tree->root, node);
+      |                                ^~~~~~~~~~
+treemap.c:138:32: error: initialization of ‘TreeNode *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+cc1: all warnings being treated as errors
+Compilation failed
+de810d1

@@ -80,9 +80,72 @@ TreeNode * minimum(TreeNode * x)
   return x;
 }
 
+TreeNode* EncontrarParent(TreeNode* root, TreeNode* node) 
+{
+  TreeMap *tree = NULL;
+    if (root == NULL || root == node) {
+        return NULL;
+    }
+    if (root->left == node || root->right == node) {
+        return root;
+    }
+    if (tree->lower_than(node->pair->key, root->pair->key)) {
+        return EncontrarParent(root->left, node);
+    } else {
+        return EncontrarParent(root->right, node);
+    }
+}
 
-void removeNode(TreeMap * tree, TreeNode* node) {
-
+void removeNode(TreeMap * tree, TreeNode* node) 
+{
+  if (node == NULL) 
+  {
+    return;
+  }
+  
+  if (node->left == NULL && node->right == NULL) 
+  {
+    if (node == tree->root) 
+    {
+      tree->root = NULL;
+    } 
+    else 
+    {
+      TreeNode* parent = EncontrarParent(tree->root, node);
+      if (parent != NULL) 
+      {
+        if (parent->left == node) 
+        {
+          parent->left = NULL;
+        } 
+        
+        else 
+        {
+          parent->right = NULL;
+        }
+      }
+    }
+        free(node);
+    } else if (node->left != NULL && node->right != NULL) {
+        TreeNode* successor = minimum(node->right);
+        node->key = successor->key;
+        removeNode(tree, successor);
+    } else {
+        TreeNode* child = node->left != NULL ? node->left : node->right;
+        if (node == tree->root) {
+            tree->root = child;
+        } else {
+            TreeNode* parent = findParent(tree->root, node);
+            if (parent != NULL) {
+                if (parent->left == node) {
+                    parent->left = child;
+                } else {
+                    parent->right = child;
+                }
+            }
+        }
+        free(node);
+    }
 }
 
 void eraseTreeMap(TreeMap * tree, void* key){
