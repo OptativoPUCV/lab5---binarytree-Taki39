@@ -52,7 +52,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value)
   {
     if (tree->current->pair->key == key) 
     {
-      return;
+      EXIT_FAILURE;
     }
     
     parent = tree->current;
