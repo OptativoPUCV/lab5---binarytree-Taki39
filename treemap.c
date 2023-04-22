@@ -249,7 +249,7 @@ Pair * firstTreeMap(TreeMap * tree)
   }
   else
   {
-    Pair *pair = (pair*)malloc(sizeof(Pair));
+    Pair *pair = (Pair *)malloc(sizeof(Pair));
     pair->key = nodo->key;
     pair->value = nodo->value;
     return pair;
