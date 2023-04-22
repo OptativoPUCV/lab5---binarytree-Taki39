@@ -50,26 +50,41 @@ void insertTreeMap(TreeMap * tree, void* key, void * value)
 
   while (tree->current != NULL) 
   {
-    if (tree->current->pair->key == key) {
+    if (tree->current->pair->key == key) 
+    {
       return;
     }
+    
     parent = tree->current;
-    if (tree->lower_than(key, tree->current->pair->key)) {
+    
+    if (tree->lower_than(key, tree->current->pair->key)) 
+    {
       tree->current = tree->current->left;
-      } 
-    else {
+    } 
+      
+    else 
+    {
       tree->current = tree->current->right;
     }
   }
     TreeNode* new_node = createTreeNode(key, value);
-    if (parent == NULL) {
-        tree->root = new_node;
-    } else if (tree->lower_than(key, parent->pair->key)) {
+    if (parent == NULL) 
+    {
+      tree->root = new_node;
+    } 
+      
+    else if (tree->lower_than(key, parent->pair->key)) 
+    {
         parent->left = new_node;
-    } else {
+    }
+      
+    else 
+    {
         parent->right = new_node;
     }
+  return;
 }
+
 
 TreeNode * minimum(TreeNode * x)
 {
@@ -134,6 +149,7 @@ void removeNode(TreeMap * tree, TreeNode* node)
     TreeNode* sucesor = minimum(node->right);
     node->pair->key = sucesor->pair->key;
     removeNode(tree, sucesor);
+    
   } 
 
   else 
@@ -156,10 +172,10 @@ void removeNode(TreeMap * tree, TreeNode* node)
         {
           parent->right = hijo;
         }
-            }
-        }
-        free(node);
+      }
     }
+    free(node);
+  }
 }
 
 void eraseTreeMap(TreeMap * tree, void* key){
