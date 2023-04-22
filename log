@@ -289,3 +289,17 @@ Sat 22 Apr 2023 11:09:07 PM UTC:
  tests:  15|4
 total_score: 25/70
 77531bb
+Sat 22 Apr 2023 11:18:41 PM UTC: 
+ treemap.c | 28 ++++++++++++++++++++++++++--
+ 1 file changed, 26 insertions(+), 2 deletions(-)
+In file included from test.c:4:
+treemap.c: In function ‘nextTreeMap’:
+treemap.c:284:3: error: expected expression before ‘}’ token
+  284 |   }
+      |   ^
+treemap.c:287:1: error: control reaches end of non-void function [-Werror=return-type]
+  287 | }
+      | ^
+cc1: all warnings being treated as errors
+Compilation failed
+7d7031a

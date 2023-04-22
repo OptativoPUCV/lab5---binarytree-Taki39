@@ -254,10 +254,34 @@ Pair * firstTreeMap(TreeMap * tree)
     pair->value = nodo->pair->value;
     return pair;
   }
-  
-return NULL;
 }
 
-Pair * nextTreeMap(TreeMap * tree) {
+Pair * nextTreeMap(TreeMap * tree) 
+{
+  TreeNode *nodo = tree->current;
+  
+  if (nodo == NULL)
+  {
     return NULL;
+  }
+
+  if(nodo->right != NULL)
+  {
+    nodo = nodo->right;
+    while(nodo->left != NULL)
+      {
+        nodo = nodo->left;
+      }
+    Pair *pair = (Pair *)malloc(sizeof(Pair));
+    pair->key = nodo->pair->key;
+    pair->value = nodo->pair->value;
+    return pair;
+  }
+
+  else
+  {
+    while (nodo->parent != NULL && nodo->parent->right != nodo)
+  }
+  
+  
 }
