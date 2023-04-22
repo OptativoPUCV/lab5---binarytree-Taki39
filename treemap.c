@@ -45,15 +45,8 @@ TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2)) {
 
 void insertTreeMap(TreeMap * tree, void* key, void * value) 
 {
-  TreeNode *nodo = createTreeNode(key, value);
   TreeNode *auxParent = (TreeNode *)malloc(sizeof(TreeNode));
   auxParent->parent = tree->root;
-  if (tree->root == NULL)
-  {
-    tree->root = nodo;
-    return;
-  }
-  tree->current = tree->root;
   
   while (tree->current != NULL)
     {
@@ -73,6 +66,8 @@ void insertTreeMap(TreeMap * tree, void* key, void * value)
       }
     }
 
+  TreeNode *nodo = createTreeNode(key, value);
+  
   if (auxParent == NULL)
   {
     tree->root = nodo;
