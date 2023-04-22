@@ -224,3 +224,9 @@ treemap.c:135:32: error: ‘TreeNode’ has no member named ‘key’
       |                                ^~
 Compilation failed
 e71cbe6
+Sat 22 Apr 2023 10:26:13 PM UTC: 
+ treemap.c | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
+ tests:  13|5
+total_score: 20/70
+e112f09
