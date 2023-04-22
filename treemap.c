@@ -58,8 +58,6 @@ void insertTreeMap(TreeMap * tree, void* key, void * value)
     {
       if (tree->current->pair->key == key)
       {
-        tree->current->pair->value = value;
-        free(nodo);
         return;
       }
       
