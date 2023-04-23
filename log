@@ -315,3 +315,20 @@ Sat 22 Apr 2023 11:26:09 PM UTC:
  tests:  17|4
 total_score: 30/70
 e60f490
+Sun 23 Apr 2023 12:21:38 AM UTC: 
+ treemap.c | 34 +++-------------------------------
+ 1 file changed, 3 insertions(+), 31 deletions(-)
+In file included from test.c:4:
+treemap.c: In function ‘insertTreeMap’:
+treemap.c:54:15: error: ‘TreeMap’ has no member named ‘nodo’
+   54 |       if (tree->nodo == tree->current)
+      |               ^~
+treemap.c:61:32: error: ‘TreeNode’ has no member named ‘key’
+   61 |       if (tree->lower_than(nodo->key,tree->current->left))
+      |                                ^~
+treemap.c:50:14: error: variable ‘parent’ set but not used [-Werror=unused-but-set-variable]
+   50 |   TreeNode * parent= NULL;
+      |              ^~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+6997c57
