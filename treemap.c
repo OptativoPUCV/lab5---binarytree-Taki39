@@ -97,21 +97,40 @@ TreeNode * minimum(TreeNode * x)
   return x;
 }
 
-TreeNode* EncontrarParent(TreeNode* root, TreeNode* node) 
+TreeNode* EncontrarParent(TreeMap * tree, TreeNode* node) 
 {
-  TreeMap *tree = NULL;
-    if (root == NULL || is_equal(tree, tree->root->pair->key, node->pair->key)) {
-        return NULL;
-    }
-    if (is_equal(tree,root->left,node) || is_equal(tree,root->right,node)) 
+  if(is_equal(tree, node, tree->root))
+  {
+    return NULL;
+  }
+  tree->current = tree->root;
+  while (tree->current != NULL)
     {
-        return root;
+      if(tree->lower_than(node->pair->key,tree->current->pair->key))
+      {
+        if(is_equal(tree, tree->current->left, node)==1)
+        {
+          return tree->current;
+        }
+          
+        else
+        {
+          tree->current = tree->current->left;
+        }
+      }
+      else
+      {
+        if(is_equal(tree, tree->current->right, node)==1)
+        {
+          return tree->current;
+        }
+        else
+        {
+          tree->current = tree->current->right;
+        }
+      }
     }
-    if (tree->lower_than(node->pair->key, root->pair->key)) {
-        return EncontrarParent(root->left, node);
-    } else {
-        return EncontrarParent(root->right, node);
-    }
+  return NULL;
 }
 
 
