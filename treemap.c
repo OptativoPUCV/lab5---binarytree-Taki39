@@ -103,7 +103,7 @@ TreeNode* EncontrarParent(TreeNode* root, TreeNode* node)
     if (root == NULL || root == node) {
         return NULL;
     }
-    if (is_equal(tree,root->left,node) || is_equal(tree,root->right,node)) 
+    if (is_equal(tree,root->left->pair->key,node->pair->key) || is_equal(tree,root->right->pair->key,node->pair->key)) 
     {
         return root;
     }
