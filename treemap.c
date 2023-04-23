@@ -100,7 +100,7 @@ TreeNode * minimum(TreeNode * x)
 TreeNode* EncontrarParent(TreeNode* root, TreeNode* node) 
 {
   TreeMap *tree = NULL;
-    if (root == NULL || root == node) {
+    if (root == NULL || root->pair->key == node->pair->key) {
         return NULL;
     }
     if (is_equal(tree,root->left,node) || is_equal(tree,root->right,node)) 
