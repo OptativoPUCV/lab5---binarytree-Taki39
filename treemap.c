@@ -163,7 +163,7 @@ void removeNode(TreeMap * tree, TreeNode* node)
     else
     {
       TreeNode * parent = EncontrarParent(tree->root, node->pair->key);
-      if (parent->left != NULL && is_equal(tree, parent->left->pair->key, node->pair->key)==1)
+      if (parent->left != NULL && (is_equal(tree, parent->left->pair->key, node->pair->key)==1))
       {
         parent->left = hijo;
       }
