@@ -106,7 +106,7 @@ TreeNode* EncontrarParent(TreeMap * tree, TreeNode* node)
   tree->current = tree->root;
   while (tree->current != NULL)
     {
-      if(tree->lower_than(node,tree->current))
+      if(tree->lower_than(node->pair->key,tree->current->pair->key))
       {
         if(is_equal(tree, tree->current->left, node)==1)
         {
