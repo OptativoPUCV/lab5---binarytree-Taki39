@@ -51,7 +51,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value)
 
   while (tree->current != NULL)
     {
-      if (tree->nodo == tree->current)
+      if (nodo->key == tree->currentpair->key)
       {
         return;
       }
