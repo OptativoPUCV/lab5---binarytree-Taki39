@@ -269,38 +269,41 @@ Pair * firstTreeMap(TreeMap * tree)
 
 Pair * nextTreeMap(TreeMap * tree) 
 {
-  if(tree==NULL)
+  TreeNode *nodo = tree->current;
+  
+  if (nodo == NULL)
   {
     return NULL;
   }
 
-  TreeNode * sucesor = NULL;
-  tree->current = tree->root;
-  if(tree->current->right != NULL)
+  if(nodo->right != NULL)
   {
-    tree->current =tree->current->right;
-    while(tree->current->left != NULL)
+    nodo = nodo->right;
+    while(nodo->left != NULL)
       {
-        tree->current = tree->current->left;
+        nodo = nodo->left;
       }
-    sucesor = tree->current;
+    Pair *pair = (Pair *)malloc(sizeof(Pair));
+    pair->key = nodo->pair->key;
+    pair->value = nodo->pair->value;
+    return pair;
   }
+
   else
   {
-    TreeNode * parent = tree->current->parent;
-    while(parent!=NULL && is_equal(tree, tree->current, parent->right))
+    while (nodo->parent != NULL && is_equal(tree, nodo->parent->right, nodo))
       {
-        tree->current = parent;
-        parent = parent->parent;
+        nodo = nodo->parent;
       }
-    sucesor = parent;
-  }
-  if(sucesor != NULL)
-  {
-    return sucesor->pair;
-  }
-  else
-  {
-    return NULL;
-  }
+    if(nodo->parent == NULL)
+    {
+      return NULL;
+    }
+    else
+    {
+      Pair *pair = (Pair *)malloc(sizeof(Pair));
+      pair->key = nodo->parent->pair->key;
+      pair->value = nodo->parent->pair->value;
+      return pair;
+    }
 }
