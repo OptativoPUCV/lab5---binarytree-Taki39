@@ -103,7 +103,8 @@ TreeNode* EncontrarParent(TreeNode* root, TreeNode* node)
     if (root == NULL || root == node) {
         return NULL;
     }
-    if (root->left == node || root->right == node) {
+    if (is_equal(tree,root->left,node) || is_equal(tree,root->right,node)) 
+    {
         return root;
     }
     if (tree->lower_than(node->pair->key, root->pair->key)) {
@@ -113,71 +114,73 @@ TreeNode* EncontrarParent(TreeNode* root, TreeNode* node)
     }
 }
 
+
 void removeNode(TreeMap * tree, TreeNode* node) 
 {
-  if (node == NULL) 
+  if (node == NULL)
   {
     return;
   }
-  
-  if (node->left == NULL && node->right == NULL) 
+
+  if(node->left == NULL && node->right == NULL)
   {
-    if (is_equal(tree,node,tree->root)==1) 
+    if (is_equal(tree, node->pair->key, tree->root->pair->key)==1)
     {
       tree->root = NULL;
-    } 
-    else 
+    }
+    else
     {
-      TreeNode* parent = EncontrarParent(tree->root, node);
-      if (parent != NULL) 
+      TreeNode* parent = EncontrarParent(tree->root, node->pair->key);
+      if(parent->left != NULL && is_equal(tree, parent->left->pair->key, node->pair->key)==1)
       {
-        if (parent->left == node) 
-        {
-          parent->left = NULL;
-        } 
-        
-        else 
-        {
-          parent->right = NULL;
-        }
+        parent->left = NULL;
+      }
+      else
+      {
+        parent->right = NULL;
       }
     }
     free(node);
-    
-  } 
-    
-  else if (node->left != NULL && node->right != NULL) 
-  {
-    TreeNode* sucesor = minimum(node->right);
-    node->pair->key = sucesor->pair->key;
-    removeNode(tree, sucesor);
-    
-  } 
+    return;
+  }
 
-  else 
+  if (node->left == NULL || node->right == NULL)
   {
-    TreeNode* hijo = node->left != NULL ? node->left : node->right;
-    if (node == tree->root) 
+    TreeNode * hijo;
+    if (node->left != NULL)
+    {
+      hijo = node->left;
+    }
+    else
+    {
+      hijo = node->right;
+    }
+
+    if (is_equal(tree, node->pair->key, tree->root->pair->key) == 1)
     {
       tree->root = hijo;
-    } 
-    else 
+    }
+    else
     {
-      TreeNode* parent = EncontrarParent(tree->root, node);
-      if (parent != NULL) 
+      TreeNode * parent = EncontrarParent(tree->root, node->pair->key);
+      if (parent->left != NULL && is_equal(tree, parent->left->pair->key, node->pair->key)==1)
       {
-        if (parent->left == node)
-        {
-          parent->left = hijo;
-        } 
-        else 
-        {
-          parent->right = hijo;
-        }
+        parent->left = hijo;
+      }
+      else
+      {
+        parent->right = hijo;
       }
     }
     free(node);
+    return;
   }
+
+  TreeNode * minNode = minimum(node->right);
+  node->pair->key = minNode->pair->key;
+  node->pair->value = minNode->pair->value;
+  removeNode(tree,minNode);
+  
 }
 
 void eraseTreeMap(TreeMap * tree, void* key){
