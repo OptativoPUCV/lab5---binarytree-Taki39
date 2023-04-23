@@ -291,7 +291,7 @@ Pair * nextTreeMap(TreeMap * tree)
 
   else
   {
-    while (nodo->parent != NULL && nodo->parent->right == nodo)
+    while (nodo->parent != NULL && is_equal(tree, nodo->parent->right, nodo))
       {
         nodo = nodo->parent;
       }
