@@ -100,7 +100,7 @@ TreeNode * minimum(TreeNode * x)
 TreeNode* EncontrarParent(TreeNode* root, TreeNode* node) 
 {
   TreeMap *tree = NULL;
-    if (root == NULL || root->pair->key == node->pair->key) {
+    if (root == NULL || root == node) {
         return NULL;
     }
     if (is_equal(tree,root->left,node) || is_equal(tree,root->right,node)) 
@@ -163,7 +163,7 @@ void removeNode(TreeMap * tree, TreeNode* node)
     else
     {
       TreeNode * parent = EncontrarParent(tree->root, node->pair->key);
-      if (parent->left != NULL && (is_equal(tree, parent->left->pair->key, node->pair->key)==1))
+      if (parent->left != NULL && is_equal(tree, parent->left->pair->key, node->pair->key)==1)
       {
         parent->left = hijo;
       }
