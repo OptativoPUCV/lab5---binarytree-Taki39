@@ -293,7 +293,7 @@ Pair * nextTreeMap(TreeMap * tree)
   {
     while (nodo->parent != NULL && is_equal(tree, nodo->parent->right, nodo))
       {
-        nodo = nodo->right;
+        nodo = nodo->parent;
       }
     if(nodo->parent == NULL)
     {
@@ -301,9 +301,14 @@ Pair * nextTreeMap(TreeMap * tree)
     }
     else
     {
+      nodo = nodo->parent->right;
+      while(nodo->left != NULL)
+        {
+          nodo=nodo->left;
+        }
       Pair *pair = (Pair *)malloc(sizeof(Pair));
-      pair->key = nodo->right->pair->key;
-      pair->value = nodo->right->pair->value;
+      pair->key = nodo->parent->pair->key;
+      pair->value = nodo->parent->pair->value;
       return pair;
     }
   }
