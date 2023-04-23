@@ -307,8 +307,8 @@ Pair * nextTreeMap(TreeMap * tree)
           nodo=nodo->left;
         }
       Pair *pair = (Pair *)malloc(sizeof(Pair));
-      pair->key = nodo->parent->pair->key;
-      pair->value = nodo->parent->pair->value;
+      pair->key = nodo->pair->key;
+      pair->value = nodo->pair->value;
       return pair;
     }
   }
