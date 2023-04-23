@@ -414,3 +414,39 @@ treemap.c:49:13: error: unused variable ‘parent’ [-Werror=unused-variable]
 cc1: all warnings being treated as errors
 Compilation failed
 132482a
+Sun 23 Apr 2023 12:38:16 AM UTC: 
+ treemap.c | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+In file included from test.c:4:
+treemap.c: In function ‘insertTreeMap’:
+treemap.c:53:22: error: passing argument 1 of ‘is_equal’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+   53 |     if (is_equal(tree->current, key) == 1)
+      |                  ~~~~^~~~~~~~~
+      |                      |
+      |                      TreeNode *
+treemap.c:22:23: note: expected ‘TreeMap *’ but argument is of type ‘TreeNode *’
+   22 | int is_equal(TreeMap* tree, void* key1, void* key2){
+      |              ~~~~~~~~~^~~~
+treemap.c:53:9: error: too few arguments to function ‘is_equal’
+   53 |     if (is_equal(tree->current, key) == 1)
+      |         ^~~~~~~~
+treemap.c:22:5: note: declared here
+   22 | int is_equal(TreeMap* tree, void* key1, void* key2){
+      |     ^~~~~~~~
+treemap.c:58:27: error: expected ‘;’ before ‘else’
+   58 |     parent = tree->current
+      |                           ^
+      |                           ;
+   59 | 
+   60 |     else if (tree->lower_than(key, current->pair->key))
+      |     ~~~~                   
+treemap.c:71:19: error: ‘current’ undeclared (first use in this function)
+   71 |   tree->current = current;
+      |                   ^~~~~~~
+treemap.c:71:19: note: each undeclared identifier is reported only once for each function it appears in
+treemap.c:49:13: error: variable ‘parent’ set but not used [-Werror=unused-but-set-variable]
+   49 |   TreeNode* parent = NULL;
+      |             ^~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+93a6a65
